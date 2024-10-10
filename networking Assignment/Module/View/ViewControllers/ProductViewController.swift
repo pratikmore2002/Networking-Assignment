@@ -50,26 +50,6 @@ extension ProductViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
-
-extension UIImageView {
-    func downloadImage(from url: URL) {
-        contentMode = .scaleToFill
-        let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                  let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                  let data = data, error == nil,
-                  let image = UIImage(data: data) else {
-                return
-            }
-            DispatchQueue.main.async {
-                self.image = image
-            }
-        }
-        dataTask.resume()
-    }
-}
-
 //HERE I NEED TO INSTALL KINGFISHER POD first.
 
 //extension UIImageView {
